@@ -1,0 +1,28 @@
+[project]
+name            = "pubg"
+requires-python = ">=3.12"
+version         = "0.1.0"
+
+dependencies = [
+    "pandas",
+    "numpy",
+    "pyarrow",
+    "scikit-learn>=1.9.0",
+    "lightgbm>=4.7.0",
+]
+
+[build-system]
+requires        = ["setuptools"]
+build-backend   = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "jupyterlab",
+    "matplotlib",
+    "seaborn",
+    "ruff"
+]
