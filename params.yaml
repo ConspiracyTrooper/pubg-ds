@@ -1,0 +1,3 @@
+features:
+  # Сопоставимый режим: датасет squad-fpp = live ranked
+  match_type: squad-fpp
