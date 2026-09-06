@@ -2,6 +2,7 @@
 import pandas as pd
 from pubg_ds import config
 from pubg_ds.features import schema
+from pubg_ds.features.derive import add_match_features
 
 
 def build_reference(df: pd.DataFrame, match_type: str) -> pd.DataFrame:
@@ -23,10 +24,12 @@ def main() -> None:
     df = pd.read_csv(config.TRAIN_CSV, usecols=usecols)
 
     ref = build_reference(df, params['features']['match_type'])
+    # Производные фичи материализуем прямо в матрицу
+    ref = add_match_features(ref)[schema.FULL_COLUMNS]
 
     config.DATA_PROCESSED.mkdir(parents=True, exist_ok=True)
     ref.to_parquet(config.DATA_PROCESSED / "reference.parquet", index=False)
-    print(f'reference: {len(ref)} строк, {ref['matchId'].nunique()} матчей')
+    print(f'reference: {len(ref)} строк, {ref["matchId"].nunique()} матчей, {len(schema.MODEL_FEATURES)} фич')
 
 if __name__ == "__main__":
     main()
