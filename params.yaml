@@ -34,3 +34,11 @@ collect:
   # Сноуболл от своих матчей; пустой список → fallback на топ-500 лидерборда
   seed_player_names: []
   max_snowball_players: 600
+
+monitor:
+  # Пороги PSI: < 0.1 стабильно, 0.1–0.25 умеренный сдвиг, >= 0.25 сильный дрифт
+  psi_moderate: 0.1
+  psi_strong: 0.25
+  # Бинов для PSI (по квантилям reference) и сглаживание нулевых долей
+  psi_bins: 10
+  psi_eps: 0.0001

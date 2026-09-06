@@ -9,6 +9,13 @@ reference:
 collect:
 	uv run python -m pubg_ds.collect.matches
 
+live:
+	uv run python -m pubg_ds.features.live
+
+monitor:
+	uv run python -m pubg_ds.monitor.drift
+	uv run python -m pubg_ds.monitor.performance
+
 tune:
 	uv run python -m pubg_ds.models.tune
 
@@ -21,4 +28,4 @@ ui:
 test:
 	uv run pytest -q
 
-.PHONY: reference collect tune train ui test
+.PHONY: reference collect live monitor tune train ui test
