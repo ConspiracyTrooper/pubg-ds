@@ -1,0 +1,16 @@
+.env
+data/
+# Артефакты модели пересобираются пайплайном; в репо только лучшие гиперпараметры
+/models/*
+!/models/best_params.json
+reports/
+# Локальный MLflow-бэкенд: бинарный sqlite с абсолютными путями, пересоздаётся make train
+mlflow.db
+research/
+.venv/
+mlruns/
+__pycache__/
+.ipynb_checkpoints/
+temp.md
+*.egg-info/
+.DS_Store
