@@ -6,6 +6,9 @@ export MLFLOW_TRACKING_URI
 reference:
 	uv run python -m pubg_ds.features.reference
 
+collect:
+	uv run python -m pubg_ds.collect.matches
+
 tune:
 	uv run python -m pubg_ds.models.tune
 
@@ -18,4 +21,4 @@ ui:
 test:
 	uv run pytest -q
 
-.PHONY: reference tune train ui test
+.PHONY: reference collect tune train ui test

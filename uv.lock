@@ -2576,12 +2576,14 @@ name = "pubg"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "httpx" },
     { name = "lightgbm" },
     { name = "mlflow" },
     { name = "numpy" },
     { name = "optuna" },
     { name = "pandas" },
     { name = "pyarrow" },
+    { name = "python-dotenv" },
     { name = "pyyaml" },
     { name = "scikit-learn" },
 ]
@@ -2597,12 +2599,14 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "httpx", specifier = ">=0.28.1" },
     { name = "lightgbm", specifier = ">=4.7.0" },
     { name = "mlflow", specifier = ">=3.15.2" },
     { name = "numpy" },
     { name = "optuna", specifier = ">=4.9.0" },
     { name = "pandas" },
     { name = "pyarrow" },
+    { name = "python-dotenv", specifier = ">=1.2.3" },
     { name = "pyyaml", specifier = ">=6.0.3" },
     { name = "scikit-learn", specifier = ">=1.9.0" },
 ]
