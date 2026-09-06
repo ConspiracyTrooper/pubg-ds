@@ -22,10 +22,13 @@ tune:
 train:
 	uv run python -m pubg_ds.models.train
 
+retrain:
+	uv run python -m pubg_ds.models.retrain
+
 ui:
 	uv run mlflow ui --backend-store-uri $(MLFLOW_TRACKING_URI)
 
 test:
 	uv run pytest -q
 
-.PHONY: reference collect live monitor tune train ui test
+.PHONY: reference collect live monitor tune train retrain ui test

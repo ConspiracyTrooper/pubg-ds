@@ -42,3 +42,9 @@ monitor:
   # Бинов для PSI (по квантилям reference) и сглаживание нулевых долей
   psi_bins: 10
   psi_eps: 0.0001
+
+retrain:
+  # Сплит live по matchId: test для сравнения + val для early stopping
+  random_state: 1
+  test_size: 0.2
+  val_size: 0.15

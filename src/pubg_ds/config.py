@@ -17,6 +17,7 @@ DATA_LIVE      = DATA_RAW / "live"                    # сырые json live-м�
 DATA_PROCESSED = PROJECT_ROOT / "data" / "processed"
 TRAIN_CSV      = DATA_RAW / "train_V2.csv"
 MODELS_DIR     = PROJECT_ROOT / "models"
+REPORTS_DIR    = PROJECT_ROOT / "reports"
 
 # PUBG API
 PUBG_API_KEY   = os.getenv("PUBG_API_KEY", "")

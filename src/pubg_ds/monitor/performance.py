@@ -1,4 +1,4 @@
-"""Model degradation: live-MAE замороженной модели vs её MAE на Kaggle-holdout.
+"""Model degradation: live-MAE замороженной модели vs её MAE на Kaggle-test.
 
 Shadow scoring с ground truth: API отдаёт завершённые матчи, поэтому предсказание
 и настоящий winPlacePerc доступны одновременно, без лага.
@@ -12,7 +12,7 @@ from pubg_ds import config
 from pubg_ds.models.predict import load_model, mae
 
 
-# live-MAE frozen-модели, Kaggle-holdout MAE и величина деградации
+# live-MAE frozen-модели, Kaggle-test MAE и величина деградации
 def degradation_summary() -> dict:
     live   = pd.read_parquet(config.DATA_PROCESSED / "live.parquet")
     frozen = load_model(config.MODELS_DIR / "frozen_model.txt")
@@ -20,12 +20,12 @@ def degradation_summary() -> dict:
     # MAE на всём live-окне (со снапом к сетке maxPlace, как в predict)
     mae_live = mae(frozen, live)
 
-    # Точка отсчёта — MAE той же модели на Kaggle-holdout (этап 4)
+    # Точка отсчёта — MAE той же модели на Kaggle-test (этап 4)
     with open(config.MODELS_DIR / "frozen_metrics.json") as f:
         mae_kaggle = json.load(f)["mae_frozen"]
 
     return {
-        "mae_kaggle_holdout": mae_kaggle,
+        "mae_kaggle_test": mae_kaggle,
         "mae_live_frozen":    mae_live,
         "degradation_abs":    mae_live - mae_kaggle,
         "degradation_pct":    (mae_live - mae_kaggle) / mae_kaggle * 100,
